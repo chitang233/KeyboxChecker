@@ -9,7 +9,7 @@ docker run -d \
   --name keybox-checker \
   --restart always \
   -e API_TOKEN=YOUR_TELEGRAM_BOT_API_TOKEN \
-  ghcr.io/chitang233/keybox-checker:main
+  ghcr.io/chitang233/keyboxchecker:main
 ```
 
 Or, you can also deploy it from source code.
