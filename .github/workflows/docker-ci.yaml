@@ -1,0 +1,41 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-push-image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Log in to GitHub Packages
+        uses: docker/login-action@master
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata (tags, labels) for GitHub Packages
+        uses: docker/metadata-action@master
+        id: ghcr-meta
+        with:
+          images: ghcr.io/chitang233/keyboxchecker
+          tags: |
+            type=ref,event=branch
+            type=sha
+            latest
+
+      - name: Build and push image to GitHub Packages
+        uses: docker/build-push-action@master
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.ghcr-meta.outputs.tags }}
+          labels: ${{ steps.ghcr-meta.outputs.labels }}
