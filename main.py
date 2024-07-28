@@ -19,7 +19,7 @@ def extract_serial_number(cert_pem):
 		if result.returncode != 0:
 			raise RuntimeError(f"OpenSSL error: {result.stderr}")
 		cert_text = result.stdout
-	pattern = r"Serial Number:\n\s*([\da-f:]+)"
+	pattern = r"Serial Number:\s*([\da-f:]+)"
 	match = re.search(pattern, cert_text, re.IGNORECASE)
 	if match:
 		serial_number = match.group(1).replace(":", "")
@@ -64,7 +64,10 @@ def handle_docs_audio(message):
 		status = get_google_sn_list()['entries'][serial_number]
 		reply += f"\nSerial number found in Google's revoked keybox list\nReason: `{status['reason']}`"
 	except KeyError:
-		reply += "\nSerial number not found in Google's revoked keybox list"
+		if serial_number == "4097":
+			reply += "\nAOSP keybox found, this keybox is untrusted"
+		else:
+			reply += "\nSerial number not found in Google's revoked keybox list"
 	bot.reply_to(message, reply, parse_mode='Markdown')
 
 
