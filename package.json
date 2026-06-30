@@ -3,6 +3,7 @@
 	"version": "1.0.0",
 	"private": true,
 	"type": "module",
+	"packageManager": "pnpm@11.9.0",
 	"scripts": {
 		"dev": "wrangler dev",
 		"deploy": "wrangler deploy",
