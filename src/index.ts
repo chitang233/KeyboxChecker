@@ -183,7 +183,16 @@ async function processGuestUrl(
 			return;
 		}
 
-		const xmlContent = new TextDecoder().decode(buffer);
+		let xmlContent = new TextDecoder().decode(buffer);
+		if (!xmlContent.trimStart().startsWith("<")) {
+			try {
+				xmlContent = new TextDecoder().decode(
+					Uint8Array.from(atob(xmlContent.trim()), (c) => c.charCodeAt(0)),
+				);
+			} catch {
+				// Not valid base64, proceed with original content
+			}
+		}
 		const result = await checkKeybox(xmlContent);
 		const reply = formatResult(result);
 		await bot.answerGuestQuery(guestQueryId, reply);
@@ -338,7 +347,16 @@ async function processUrl(
 			return;
 		}
 
-		const xmlContent = new TextDecoder().decode(buffer);
+		let xmlContent = new TextDecoder().decode(buffer);
+		if (!xmlContent.trimStart().startsWith("<")) {
+			try {
+				xmlContent = new TextDecoder().decode(
+					Uint8Array.from(atob(xmlContent.trim()), (c) => c.charCodeAt(0)),
+				);
+			} catch {
+				// Not valid base64, proceed with original content
+			}
+		}
 		const result = await checkKeybox(xmlContent);
 
 		const kvKey = crypto.randomUUID().slice(0, 8);
