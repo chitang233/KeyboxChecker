@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "keybox-checker",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-06-30",
+  "compatibility_flags": ["nodejs_compat"],
+  "kv_namespaces": [
+    {
+      "binding": "KV",
+      "id": "9d0c1fab4d2840cca590da9128ac47be",
+    },
+  ],
+}

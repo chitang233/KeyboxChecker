@@ -1,0 +1,21 @@
+{
+	"name": "keybox-checker",
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "wrangler dev",
+		"deploy": "wrangler deploy",
+		"typecheck": "tsc --noEmit"
+	},
+	"dependencies": {
+		"@peculiar/x509": "^2.0.0",
+		"fast-xml-parser": "^5.9.3",
+		"reflect-metadata": "^0.2.2"
+	},
+	"devDependencies": {
+		"@cloudflare/workers-types": "^4.20250620.0",
+		"typescript": "^5.8.3",
+		"wrangler": "^4.105.0"
+	}
+}
