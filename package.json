@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"private": true,
 	"type": "module",
-	"packageManager": "pnpm@11.9.0",
+	"packageManager": "pnpm@11.20.0",
 	"scripts": {
 		"dev": "wrangler dev",
 		"deploy": "wrangler deploy",
@@ -15,8 +15,8 @@
 		"reflect-metadata": "^0.2.2"
 	},
 	"devDependencies": {
-		"@cloudflare/workers-types": "^5.20260723.1",
+		"@cloudflare/workers-types": "^5.20260804.1",
 		"typescript": "^7.0.2",
-		"wrangler": "^4.114.0"
+		"wrangler": "^4.118.0"
 	}
 }
