@@ -11,12 +11,12 @@
 	},
 	"dependencies": {
 		"@peculiar/x509": "^2.0.0",
-		"fast-xml-parser": "^5.10.1",
+		"fast-xml-parser": "^5.11.0",
 		"reflect-metadata": "^0.2.2"
 	},
 	"devDependencies": {
-		"@cloudflare/workers-types": "^5.20260804.1",
+		"@cloudflare/workers-types": "^5.20260818.1",
 		"typescript": "^7.0.2",
-		"wrangler": "^4.118.0"
+		"wrangler": "^4.123.0"
 	}
 }
